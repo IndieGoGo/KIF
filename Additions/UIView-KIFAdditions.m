@@ -192,6 +192,9 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
         
         // If the view is an accessibility container, and we didn't find a matching subview,
         // then check the actual accessibility elements
+        if ([@"UITableViewCellAccessibilityElement" isEqualToString:NSStringFromClass([element class])]) {
+            continue;
+        }
         NSInteger accessibilityElementCount = element.accessibilityElementCount;
         if (accessibilityElementCount == 0 || accessibilityElementCount == NSNotFound) {
             continue;
